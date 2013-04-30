@@ -6,42 +6,63 @@
 #include <stdlib.h>
 #include "heap.h"
 
-typedef struct heap{
+struct heap{
 	int length;
 	int *array;
 	int maxLength;
-} heap;
+};
 
-heap newHeap(int maxSize){
-	heap H;
-	int myarray[maxSize] = malloc(maxSize*sizeof(int));
-	H = malloc(sizeof(heap));
-	H->maxLength = maxsize;
+heapRef newHeap(int maxSize){
+	heapRef H;
+	int i = 0;
+	int myarray[maxSize];
+	for(i = 0; i < maxSize; i++){
+		myarray[i] = 0;
+	}
+	H = malloc(sizeof(struct heap));
+	H->maxLength = maxSize;
 	H->length = 0;
 	H->array = myarray;
+	H->array = (int *) calloc(maxSize, sizeof(int));
 	return H;
 }
 
+void freeHeap(heapRef* pH){
+	if(pH!=NULL && *pH==NULL) {return;}
+	free(*pH);
+	*pH = NULL;
+}
+
 /** Access Functions**/
-int isFull(heap h){
-	return h->length == h->maxLength;
+int isFull(heapRef h){
+	return (h->length == h->maxLength);
 }
 
-int isEmpty(heap h){
-	return h->length == 0;
+int isEmpty(heapRef h){
+	return (h->length == 0);
 }
 
-int maxValue(){
-	return h->array[0];
+int maxValue(heapRef h){
+	return (h->array[0]);
 }
 
-void printHeap(heap h){
+void printHeap(heapRef h){
 	int n;
-	printf("Heap Values:");
-	for(n = 0; n < h->maxLength; n++){
-		printf("%d : ", h->array[n]);
+	printf("Heap Values");
+	for(n = 0; n < (h->maxLength); n++){
+		printf(" : %d", h->array[n]);
 	}
 	printf("\n");
+}
+
+void deleteMax(heapRef h){
+	h->array[0] = 0;
+	h->length--;
+}
+
+void insert(heapRef h, int priority){
+	h->array[(h->length)]= priority;
+	h->length++;
 }
 
 

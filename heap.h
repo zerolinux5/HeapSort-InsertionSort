@@ -6,11 +6,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-heap newHeap(int maxSize);
-int isFull(heap h);
-int isEmpty(heap h);
-int maxValue(heap h);
+typedef struct heap * heapRef;
+
+heapRef newHeap(int maxSize);
+void freeHeap(heapRef* pH);
+int isFull(heapRef h);
+int isEmpty(heapRef h);
+int maxValue(heapRef h);
 void printHeap(heapRef h);
-void deleteMax(heap h);
-void insert(heap h, int priority);
+void deleteMax(heapRef h);
+void insert(heapRef h, int priority);
 #endif
