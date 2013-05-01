@@ -60,15 +60,23 @@ void printHeap(heapRef h){
 }
 
 void deleteMax(heapRef h){
-	h->array[0] = 0;
-	h->length--;
-	heapifyDown(h);
+	if(h->array[0] == 0){
+		printf("Trying to delete when no value.\n");
+	} else {
+		h->array[0] = 0;
+		h->length--;
+		heapifyDown(h);
+	}
 }
 
 void insert(heapRef h, int priority){
-	h->array[(h->length)]= priority;
-	h->length++;
-	heapify(h);
+	if(h->length == h->maxLength){
+		printf("Trying to insert when full.\n");
+	} else {
+		h->array[(h->length)]= priority;
+		h->length++;
+		heapify(h);
+	}
 }
 
 void heapify(heapRef h){
