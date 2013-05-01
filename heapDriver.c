@@ -8,10 +8,17 @@
 
 int main(int argc, char *argv[]){
 	heapRef H = newHeap(5);
-	printf("%d\n", isEmpty(H));
-	insert(H, 100);
+	printf("Is the file empty? : %d\n", isEmpty(H));
+	insert(H, 20);
+	printHeap(H);
 	insert(H, 50);
-	printf("%d\n", isEmpty(H));
+	printHeap(H);
+	insert(H, 20);
+	printHeap(H);
+	insert(H, 100);
+	printf("Is the file Empty? : %d\n", isEmpty(H));
+	printHeap(H);
+	deleteMax(H);
 	printHeap(H);
 	freeHeap(&H);
 	return 0;
