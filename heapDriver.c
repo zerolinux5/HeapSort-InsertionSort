@@ -20,6 +20,12 @@ int main(int argc, char *argv[]){
 	printHeap(H);
 	deleteMax(H);
 	printHeap(H);
+	deleteMax(H);
+	printHeap(H);
+	insert(H, 90);
+	printHeap(H);
+	deleteMax(H);
+	printHeap(H);
 	freeHeap(&H);
 	return 0;
 }

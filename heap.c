@@ -89,21 +89,32 @@ void heapify(heapRef h){
 
 void heapifyDown(heapRef h){
 	int i = 1;
-	h->array[1-1] = 0;
+	h->array[0] = 0;
+	int flag = 0;
 	while(1){
 		int j = 2*i;
 		int k = 2*i+1;
 		int temp = 0;
 		if(h->array[j-1] > h->array[k-1]){
 			temp = h->array[j-1];
+			flag = 1;
 		} else {
 			temp = h->array[k-1];
+			flag = 2;
 		}
-		if(h->array[i-1] < h->array[temp]){
-			int temp2 = h->array[i-1];
-			h->array[i-1] = h->array[temp];
-			h->array[temp] = temp2;
-			i = temp;
+		if(h->array[i-1] < temp){
+			if(flag == 1){
+				int temp2 = h->array[i-1];
+				h->array[i-1] = h->array[j-1];
+				h->array[j-1] = temp2;
+				i = j;
+			} else {
+				int temp2 = h->array[i-1];
+				h->array[i-1] = h->array[k-1];
+				h->array[k-1] = temp2;
+				i = k;
+			}
+
 		} else {
 			break;
 		}

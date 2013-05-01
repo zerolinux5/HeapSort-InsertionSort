@@ -1,19 +1,23 @@
-# Jesus Magana
-# Makefile for pa2
+# Michael Sit
+# Makefile for programming assignment 2
+# LEARN HOW TO COMPILE C PROGRAMS!!!!!!!!!!!!!!!!!!!!!
 
 GCC       = gcc -g -O0 -Wall -Wextra -std=gnu99
 
-store : list.o store.o
-	${GCC} -o store store.o list.o
+sortPrint : insertionSort.o sortPrint.o
+	${GCC} -o sortPrint sortPrint.o insertionSort.o
 
-store.o : list.h store.c
-	${GCC} -c store.c
+sortPrint.o : insertionSort.h sortPrint.c
+	${GCC} -c sortPrint.c
 
-heap.o : heap.h heap.c
-	${GCC} -c heap.c
+insertionSort.o : insertionSort.h insertionSort.c
+	${GCC} -c insertionSort.c
 
-heapDriver : heapDriver.o heap.o
+heapDriver : heap.o heapDriver.o
 	${GCC} -o heapDriver heapDriver.o heap.o
 
 heapDriver.o : heap.h heapDriver.c
 	${GCC} -c heapDriver.c
+
+heap.o : heap.h heap.c
+	${GCC} -c heap.c
