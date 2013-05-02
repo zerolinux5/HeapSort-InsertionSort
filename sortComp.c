@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "heapSort.h"
 #include "insertionSort.h"
 
 int main(int argc, char *argv[]){
-	    FILE *in;
-	    int i;
-	    int j;
+        FILE *in;
+        clock_t startTime, duration;
+        int i;
+        int j;
 
         in = fopen(argv[1], "r");
         if(in==NULL){
@@ -23,10 +25,14 @@ int main(int argc, char *argv[]){
         	keys[i] = j;
         	keys2[i] = j; 
         }
+        startTime = clock();
         heapSort(keys,numOfKeys);
+        duration = clock() - startTime;
+        printf ("HeapSort took %f seconds.\n", ((float) duration ) / CLOCKS_PER_SEC);
+        startTime = clock();
         insertionSort(keys2,numOfKeys);
-
-
+        duration = clock() - startTime;
+        printf ("insertionSort took %f seconds.\n", ((float) duration ) / CLOCKS_PER_SEC);
         printf("\n");
         fclose(in);
         return(0);
