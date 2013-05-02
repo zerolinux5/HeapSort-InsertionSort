@@ -20,11 +20,14 @@ int main(int argc, char *argv[]){
         fscanf(in, "%d", &numOfKeys);
         int keys[numOfKeys];
         int keys2[numOfKeys];
+        /*read in the numbers and set them inside both arrays*/
         for(i = 0; i < numOfKeys;i++){
         	fscanf (in, "%d", &j);
         	keys[i] = j;
         	keys2[i] = j; 
         }
+
+        /*Here both sorting times will be clocked and displayed*/
         startTime = clock();
         heapSort(keys,numOfKeys);
         duration = clock() - startTime;

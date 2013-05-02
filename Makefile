@@ -1,22 +1,14 @@
-# $Id: Makefile,v 1.8 2013-05-02 14:02:11-07 - - $
-
-# Aaron Ramirez - aramir22@ucsc.edu
-
-MKFILE   =  Makefile
+# Jesus Magana jmagana7@ucsc.edu
 
 GCC      =  gcc -g -O0 -Wall -Wextra -std=gnu99 
 
 CHEADER  =  insertionSort.h heap.h heapSort.h
 CSOURCE  =  heapDriver.c ${CHEADER:.h=.c} sortPrint.c sortComp.c
 EXECBIN  =  heapDriver sortPrint sortComp
-#OBJECTS  =	${CSOURCE:.c=.o}
-SOURCES	 =	${CHEADER} ${CSOURCE} ${MKFILE} 
+SOURCES	 =	${CHEADER} ${CSOURCE} Makefile
 ALLFILES =	${SOURCES} README
 
 all	: ${EXECBIN}
-
-# ${EXECBIN} : ${OBJECTS}
-# 	${GCC} -o $@ ${OBJECTS}
 
 %.o : %.c
 	${GCC} -c $<

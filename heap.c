@@ -20,16 +20,10 @@ struct heap{
 /*set the array pointer of the heap to the array*/
 heapRef newHeap(int maxSize){
 	heapRef H;
-	int i = 0;
-	int myarray[maxSize];
-	for(i = 0; i < maxSize; i++){
-		myarray[i] = 0;
-	}
 	H = malloc(sizeof(struct heap));
 	H->maxLength = maxSize;
 	H->length = 0;
-	H->array = myarray;
-	H->array = (int *) calloc(maxSize, sizeof(int));
+	H->array = malloc(maxSize * sizeof(int*));
 	return H;
 }
 
