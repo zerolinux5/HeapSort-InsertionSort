@@ -45,8 +45,9 @@ heapRef buildHeap (int maxSize, int data[], int numData){
 
 /*Here we free the heap and all its values*/
 void freeHeap(heapRef* pH){
-	free(*pH);
-	*pH = NULL;
+	heapRef H = *pH;
+	free(H->array);
+	free(H);
 }
 
 /** Access Functions**/

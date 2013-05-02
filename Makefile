@@ -1,31 +1,53 @@
-# Jesus Magana
-# Makefile for programming assignment 2
+# $Id: Makefile,v 1.8 2013-05-02 14:02:11-07 - - $
 
-GCC       = gcc -g -O0 -Wall -Wextra -std=gnu99
+# Aaron Ramirez - aramir22@ucsc.edu
 
-sortComp : insertionSort.o sortComp.o
-	${GCC} -o sortComp sortComp.o insertionComp.o
+MKFILE   =  Makefile
 
-sortComp.o : insertionSort.h sortComp.c
-	${GCC} -c sortPrint.c
+GCC      =  gcc -g -O0 -Wall -Wextra -std=gnu99 
 
-sortPrint : insertionSort.o heapSort.o sortPrint.o
-	${GCC} -o sortPrint sortPrint.o insertionSort.o heapSort.o
+CHEADER  =  insertionSort.h heap.h heapSort.h
+CSOURCE  =  heapDriver.c ${CHEADER:.h=.c} sortPrint.c sortComp.c
+EXECBIN  =  insertionSort heapDriver heapSort
+#OBJECTS  =	${CSOURCE:.c=.o}
+SOURCES	 =	${CHEADER} ${CSOURCE} ${MKFILE} 
+ALLFILES =	${SOURCES} README
 
-sortPrint.o : insertionSort.h heapSort.h sortPrint.c
-	${GCC} -c sortPrint.c
+all	: ${EXECBIN}
 
-insertionSort.o : insertionSort.h insertionSort.c
-	${GCC} -c insertionSort.c
+# ${EXECBIN} : ${OBJECTS}
+# 	${GCC} -o $@ ${OBJECTS}
 
-heapSort.o : heap.h heap.c heapSort.h heapSort.c
-	${GCC} -c heapSort.c
+%.o : %.c
+	${GCC} -c $<
 
-heapDriver : heap.o heapDriver.o
-	${GCC} -o heapDriver heapDriver.o heap.o
 
-heapDriver.o : heap.h heapDriver.c
-	${GCC} -c heapDriver.c
+insertionSort : insertionSort.c
+	${GCC} -o $@ $^
 
-heap.o : heap.h heap.c
-	${GCC} -c heap.c
+
+heapDriver : heapDriver.c heap.o
+	${GCC} -o $@ $^
+
+heapSort : heapSort.c heap.o
+	${GCC} -o $@ $^
+
+sortComp : sortComp.c insertionSort.o heapSort.o heap.o
+	${GCC} -o $@ $^
+
+sortPrint : sortPrint.c insertionSort.o heapSort.o heap.o
+	${GCC} -o $@ $^
+
+
+ci : ${SOURCES}
+	cid + ${SOURCES}
+
+clean : 
+	- rm *.o
+
+spotless : clean 
+	- rm ${EXECBIN}
+
+zip : 
+	zip MaganaJProg2.zip  ${ALLFILES}
+

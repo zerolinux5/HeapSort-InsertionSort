@@ -14,12 +14,14 @@ void heapSort(int keys[],int numKeys){
 	int i;
 	heapRef H = newHeap(numKeys);
 	for(i = 0; i<numKeys;i++){
-		insert(H, keys[i]);
+		if(!isFull(H))
+			insert(H, keys[i]);
 	}
 	int j;
 	for(j = numKeys-1; j>0; j--){
 		keys[j] = maxValue(H);
-		deleteMax(H);
+		if(!isEmpty(H))
+			deleteMax(H);
 	}
 	freeHeap(&H);
 }

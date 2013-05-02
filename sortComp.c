@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
         startTime = clock();
         insertionSort(keys2,numOfKeys);
         duration = clock() - startTime;
-        printf ("insertionSort took %f seconds.\n", ((float) duration ) / CLOCKS_PER_SEC);
+        printf ("InsertionSort took %f seconds.\n", ((float) duration ) / CLOCKS_PER_SEC);
         printf("\n");
         fclose(in);
         return(0);

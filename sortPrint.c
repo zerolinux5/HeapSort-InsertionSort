@@ -29,7 +29,7 @@ int main(int argc, char *argv[]){
         for(i = 0; i < numOfKeys;i++){
         	printf(" : %d",keys[i]);
         }
-        printf("\n The insertionSorted Array");
+        printf("\nThe insertionSorted Array");
         for(i = 0; i < numOfKeys;i++){
         	printf(" : %d",keys2[i]);
         }
