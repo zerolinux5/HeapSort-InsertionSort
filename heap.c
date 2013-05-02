@@ -76,13 +76,12 @@ void deleteMax(heapRef h){
 	if(h->array[0] == 0){
 		printf("Trying to delete when no value.\n");
 	} else {
-		h->array[0] = 0;
 		h->length--;
 		heapifyDown(h);
 	}
 }
 
-/*THis will insert the value at the curernt spot of length and then */
+/*This will insert the value at the curernt spot of length and then */
 /*it will compare to the parent until it is in the correct place*/
 void insert(heapRef h, int priority){
 	if(h->length == h->maxLength){
@@ -117,6 +116,9 @@ void heapifyDown(heapRef h){
 	h->array[0] = 0;
 	int flag = 0;
 	while(1){
+		if(i >= h->maxLength){
+			break;
+		}
 		int j = 2*i;
 		int k = 2*i+1;
 		int temp = 0;
@@ -139,7 +141,6 @@ void heapifyDown(heapRef h){
 				h->array[k-1] = temp2;
 				i = k;
 			}
-
 		} else {
 			break;
 		}

@@ -25,6 +25,10 @@ int main(int argc, char *argv[]){
 		insert(H, 100);
 	printf("Is the file Empty? : %d\n", isEmpty(H));
 	printHeap(H);
+	if(!isFull(H))
+		insert(H, 30);
+	printHeap(H);
+	printf("About to start deleting:\n");
 	if(!isEmpty(H))
 		deleteMax(H);
 	printHeap(H);
