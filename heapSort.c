@@ -13,8 +13,8 @@ void heapSort(int keys[],int numKeys){
 	for(i = 0; i<numKeys;i++){
 		insert(H, keys[i]);
 	}
-	int j = 0;
-	for(j = 0; j< numKeys; j++){
+	int j;
+	for(j = numKeys-1; j>0; j--){
 		keys[j] = maxValue(H);
 		deleteMax(H);
 	}
