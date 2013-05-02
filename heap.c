@@ -16,6 +16,8 @@ struct heap{
 	int maxLength;
 };
 
+/*here we make an array of size maxSize, then set all the values to zero and */
+/*set the array pointer of the heap to the array*/
 heapRef newHeap(int maxSize){
 	heapRef H;
 	int i = 0;
@@ -31,6 +33,7 @@ heapRef newHeap(int maxSize){
 	return H;
 }
 
+/*Here we build a heap using an array, the current number, and the maximum size of the array*/
 heapRef buildHeap (int maxSize, int data[], int numData){
 	heapRef H = newHeap(maxSize);
 	int i;
@@ -40,8 +43,8 @@ heapRef buildHeap (int maxSize, int data[], int numData){
 	return H;
 }
 
+/*Here we free the heap and all its values*/
 void freeHeap(heapRef* pH){
-	if(pH!=NULL && *pH==NULL) {return;}
 	free(*pH);
 	*pH = NULL;
 }
@@ -59,6 +62,7 @@ int maxValue(heapRef h){
 	return (h->array[0]);
 }
 
+/*Here we pront out the values of the heap for testing*/
 void printHeap(heapRef h){
 	int n;
 	printf("Heap Values");
@@ -67,7 +71,7 @@ void printHeap(heapRef h){
 	}
 	printf("\n");
 }
-
+/*This will set the top value to zero and then heapify it down to the bottom*/
 void deleteMax(heapRef h){
 	if(h->array[0] == 0){
 		printf("Trying to delete when no value.\n");
@@ -78,6 +82,8 @@ void deleteMax(heapRef h){
 	}
 }
 
+/*THis will insert the value at the curernt spot of length and then */
+/*it will compare to the parent until it is in the correct place*/
 void insert(heapRef h, int priority){
 	if(h->length == h->maxLength){
 		printf("Trying to insert when full.\n");
@@ -88,6 +94,7 @@ void insert(heapRef h, int priority){
 	}
 }
 
+/*Here is where the comparison and swaps are done for insertion*/
 void heapify(heapRef h){
 	int i = h->length-1;
 	while(1){
@@ -104,6 +111,7 @@ void heapify(heapRef h){
 	}
 }
 
+/*Here is where the comparison and swaps are done for deleteMax*/
 void heapifyDown(heapRef h){
 	int i = 1;
 	h->array[0] = 0;

@@ -12,30 +12,42 @@ int main(int argc, char *argv[]){
 	heapRef H2 = buildHeap(5, data, 3);
 	printHeap(H2);
 	printf("Is the file empty? : %d\n", isEmpty(H));
-	insert(H, 20);
+	if(!isFull(H))
+		insert(H, 20);
 	printHeap(H);
-	insert(H, 50);
+	if(!isFull(H))
+		insert(H, 50);
 	printHeap(H);
-	insert(H, 20);
+	if(!isFull(H))
+		insert(H, 20);
 	printHeap(H);
-	insert(H, 100);
+	if(!isFull(H))
+		insert(H, 100);
 	printf("Is the file Empty? : %d\n", isEmpty(H));
 	printHeap(H);
-	deleteMax(H);
+	if(!isEmpty(H))
+		deleteMax(H);
 	printHeap(H);
 	printf("What is the max value: %d\n", maxValue(H));
-	deleteMax(H);
+	if(!isEmpty(H))
+		deleteMax(H);
 	printHeap(H);
-	insert(H, 90);
+	if(!isFull(H))
+		insert(H, 90);
 	printHeap(H);
-	deleteMax(H);
+	if(!isEmpty(H))
+		deleteMax(H);
 	printHeap(H);
-	deleteMax(H);
+	if(!isEmpty(H))
+		deleteMax(H);
 	printHeap(H);
-	deleteMax(H);
+	if(!isEmpty(H))
+		deleteMax(H);
 	printHeap(H);
-	deleteMax(H);
-	insert(H, 100);
+	if(!isEmpty(H))
+		deleteMax(H);
+	if(!isFull(H))
+		insert(H, 100);
 	printHeap(H);
 	freeHeap(&H);
 	freeHeap(&H2);

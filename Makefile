@@ -1,17 +1,25 @@
-# Michael Sit
+# Jesus Magana
 # Makefile for programming assignment 2
-# LEARN HOW TO COMPILE C PROGRAMS!!!!!!!!!!!!!!!!!!!!!
 
 GCC       = gcc -g -O0 -Wall -Wextra -std=gnu99
 
-sortPrint : insertionSort.o sortPrint.o
-	${GCC} -o sortPrint sortPrint.o insertionSort.o
+sortComp : insertionSort.o sortComp.o
+	${GCC} -o sortComp sortComp.o insertionComp.o
 
-sortPrint.o : insertionSort.h sortPrint.c
+sortComp.o : insertionSort.h sortComp.c
+	${GCC} -c sortPrint.c
+
+sortPrint : insertionSort.o heapSort.o sortPrint.o
+	${GCC} -o sortPrint sortPrint.o insertionSort.o heapSort.o
+
+sortPrint.o : insertionSort.h heapSort.h sortPrint.c
 	${GCC} -c sortPrint.c
 
 insertionSort.o : insertionSort.h insertionSort.c
 	${GCC} -c insertionSort.c
+
+heapSort.o : heap.h heap.c heapSort.h heapSort.c
+	${GCC} -c heapSort.c
 
 heapDriver : heap.o heapDriver.o
 	${GCC} -o heapDriver heapDriver.o heap.o

@@ -6,6 +6,9 @@
 #include <stdlib.h>
 #include "insertionSort.h"
 
+/*This will take an array and using a pointer to the curernt value*/
+/*will step through the values on the left and sort them. Once that*/
+/*is done it will move the current pointer to the next value and repeat*/
 void insertionSort(int keys[],int numKeys){
 	int pointerOut, pointerIn, swap;
 

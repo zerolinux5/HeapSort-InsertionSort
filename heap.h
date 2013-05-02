@@ -10,11 +10,15 @@ typedef struct heap * heapRef;
 
 heapRef newHeap(int maxSize);
 heapRef buildHeap(int maxSize, int data[], int numData);
+
+/**Access Functions**/
 void freeHeap(heapRef* pH);
 int isFull(heapRef h);
 int isEmpty(heapRef h);
 int maxValue(heapRef h);
 void printHeap(heapRef h);
-void deleteMax(heapRef h);
-void insert(heapRef h, int priority);
+
+/**Manipulation Function**/
+void deleteMax(heapRef h);				//precondition isEmpty()
+void insert(heapRef h, int priority);	//precondition isFull()
 #endif
