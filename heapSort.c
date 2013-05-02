@@ -7,7 +7,7 @@
 #include "heapSort.h"
 #include "heap.h"
 
-/*this function will make a heap using heap.h and then it will insert the array*/
+/*This function will make a heap using heap.h and then it will insert the array*/
 /*the array will be sorted with max on top so we will get the value of the max*/
 /*and set that equal to the original array thus being sorted*/
 void heapSort(int keys[],int numKeys){

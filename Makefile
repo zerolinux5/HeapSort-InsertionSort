@@ -8,7 +8,7 @@ GCC      =  gcc -g -O0 -Wall -Wextra -std=gnu99
 
 CHEADER  =  insertionSort.h heap.h heapSort.h
 CSOURCE  =  heapDriver.c ${CHEADER:.h=.c} sortPrint.c sortComp.c
-EXECBIN  =  insertionSort heapDriver heapSort
+EXECBIN  =  heapDriver sortPrint sortComp
 #OBJECTS  =	${CSOURCE:.c=.o}
 SOURCES	 =	${CHEADER} ${CSOURCE} ${MKFILE} 
 ALLFILES =	${SOURCES} README
@@ -20,11 +20,6 @@ all	: ${EXECBIN}
 
 %.o : %.c
 	${GCC} -c $<
-
-
-insertionSort : insertionSort.c
-	${GCC} -o $@ $^
-
 
 heapDriver : heapDriver.c heap.o
 	${GCC} -o $@ $^
@@ -38,16 +33,5 @@ sortComp : sortComp.c insertionSort.o heapSort.o heap.o
 sortPrint : sortPrint.c insertionSort.o heapSort.o heap.o
 	${GCC} -o $@ $^
 
-
-ci : ${SOURCES}
-	cid + ${SOURCES}
-
 clean : 
 	- rm *.o
-
-spotless : clean 
-	- rm ${EXECBIN}
-
-zip : 
-	zip MaganaJProg2.zip  ${ALLFILES}
-
