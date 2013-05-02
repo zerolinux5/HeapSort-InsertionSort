@@ -21,14 +21,3 @@ void insertionSort(int keys[],int numKeys){
     }
   }
 }
-
-int main(int argc, char *argv[]){
-	int key[] ={2,1,3,4,12,4};
-	insertionSort(key, 6);
-	int i;
-	printf("The array contains \n");
-	for(i = 0;i<6;i++){
-		printf(" : %d\n",key[i]);
-	}
-	return 0;
-}
