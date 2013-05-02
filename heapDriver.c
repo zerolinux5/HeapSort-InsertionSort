@@ -7,7 +7,10 @@
 #include "heap.h"
 
 int main(int argc, char *argv[]){
+	int data[] = {10,1,100};
 	heapRef H = newHeap(5);
+	heapRef H2 = buildHeap(5, data, 3);
+	printHeap(H2);
 	printf("Is the file empty? : %d\n", isEmpty(H));
 	insert(H, 20);
 	printHeap(H);
@@ -35,5 +38,6 @@ int main(int argc, char *argv[]){
 	insert(H, 100);
 	printHeap(H);
 	freeHeap(&H);
+	freeHeap(&H2);
 	return 0;
 }

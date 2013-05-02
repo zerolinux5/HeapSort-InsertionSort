@@ -31,6 +31,15 @@ heapRef newHeap(int maxSize){
 	return H;
 }
 
+heapRef buildHeap (int maxSize, int data[], int numData){
+	heapRef H = newHeap(maxSize);
+	int i;
+	for(i = 0; i < numData; i++){
+		insert(H, data[i]);
+	}
+	return H;
+}
+
 void freeHeap(heapRef* pH){
 	if(pH!=NULL && *pH==NULL) {return;}
 	free(*pH);

@@ -9,6 +9,7 @@
 typedef struct heap * heapRef;
 
 heapRef newHeap(int maxSize);
+heapRef buildHeap(int maxSize, int data[], int numData);
 void freeHeap(heapRef* pH);
 int isFull(heapRef h);
 int isEmpty(heapRef h);
